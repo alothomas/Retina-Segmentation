@@ -128,9 +128,9 @@ class UNetWithResnet50Encoder(nn.Module):
         x = self.out(x)
         del pre_pools
         if with_output_feature_map:
-            return torch.sigmoid(x), output_feature_map
+            return x, output_feature_map
         else:
-            return torch.sigmoid(x)
+            return x
 
 model = UNetWithResnet50Encoder().cuda()
 inp = torch.rand((2, 3, 512, 512)).cuda()
